@@ -1,0 +1,74 @@
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<title>Order Form</title>
+	<link rel="stylesheet" th:href="@{/styles.css}"/>
+</head>
+
+<body>
+<form method="POST" th:action="@{/orders}" th:object="${order}">
+<h1>Order your Investment option</h1>
+<img th:src="@{/images/financeLogo.jpg}" />
+<a th:href="@{/investment}" id="another">Choose your investment</a><br/>
+
+<div th:if="${#fields.hasErrors()}">
+<span class="validationError">
+	Please correct the problems below and resubmit
+</span>
+</div>
+
+<h3>Deliver contract for investment to...</h3>
+<label for="name">Name:</label>
+<input type="text" th:field="*{name}"/>
+ <span class="validationError" th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name is invalid</span>
+<br/>
+
+<label for="city">City:</label>
+<input type="text" th:field="*{city}"/>
+ <span class="validationError" th:if="${#fields.hasErrors('city')}" th:errors="*{city}">City is invalid</span>
+<br/>
+
+<label for="address">Address:</label>
+<input type="text" th:field="*{address}">
+ <span class="validationError" th:if="${#fields.hasErrors('address')}" th:errors="*{address}"></span>Address code is invalid</span>
+<br/>
+
+<label for="state">State: </label>
+ <input type="text" th:field="*{state}"/>
+  <span class="validationError" th:if="${#fields.hasErrors('state')}" th:errors="*{state}">State is invalid</span>
+ <br/>
+
+ <label for="zip">Zip code: </label>
+ <input type="text" th:field="*{zip}"/>
+ <span class="validationError" th:if="${#fields.hasErrors('zip')}" th:errors="*{zip}">Zip code is invalid</span>
+ <br/>
+
+<h3>My Email address:</h3>
+<label for="email">Email:</label>
+<input type="text" th:field="*{email}"/>
+<span class="validationError" th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Email address is invalid</span>
+<br/>
+
+
+
+<h3>Here's how I'll pay...</h3>
+ <label for="number">Credit Card #: </label>
+ <input type="text" th:field="*{number}"/>
+ <span class="validationError" th:if="${#fields.hasErrors('number')}" th:errors="*{number}">Credit Card number error</span>
+ <br/>
+
+ <label for="expiration">Expiration: </label>
+ <input type="text" th:field="*{expiration}"/>
+ <span class="validationError" th:if="${#fields.hasErrors('expiration')}" th:errors="*{expiration}">Expiration is invalid</span>
+ <br/>
+
+ <label for="cvv">CVV: </label>
+ <input type="text" th:field="*{cvv}"/>
+ <span class="validationError" th:if="${#fields.hasErrors('cvv')}" th:errors="*{cvv}">CVV is invalid</span>
+ <br/>
+
+<input type ="submit" value ="Submit order"/>
+</form>
+</body>
+
+</html>

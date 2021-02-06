@@ -1,0 +1,72 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<title>Investment Cloud Page</title>
+	<link rel="stylesheet" th:href="@{/styles.css}"/>
+</head>
+
+<body>
+	<h1>Choose type of your investment:</h1>
+	 <img th:src="@{/images/financeLogo.jpg}" />
+	 <form method="POST" th:object="${investment}">
+		 <div class="grid">
+			 <div class="investment-group" id="bond">
+				 <h3>Chose your bond:</h3>
+				 <div th:each="investment:${bonds}">
+					 <input name="investments" type="checkbox" th:value="${investment.id}"/>
+<span th:text="${investment.name}">INVESTMENT</span><br/>
+					</div>
+			 </div>
+
+		 <div class="investment-group" id="retirement">
+			 <h3>Choose your retirement:</h3>
+			 <div th:each="investment:${retirement}">
+				 <input name="investments" type="checkbox" th:value="${investment.id}"/>
+				 <span th:text="${investment.name}">INVESTMENT</span><br/>
+			 
+			 </div>
+		 </div>
+
+		 <div class="investment-group" id="investment_fund">
+			 <h3>Choose your investment fund</h3>
+			 <div th:each="investment:${investment_funds}">
+				 <input name="investments" type="checkbox" th:value="${investment.id}"/>
+				 <span th:text="${investment.name}">INVESTMENT</span><br/>
+			 </div>
+		 </div>
+
+		 <div class="investment-group" id="stock">
+			 <h3>Choose your stock:</h3>
+			 <div th:each="investment:${stocks}">
+				 <input name="investments" type="checkbox" th:value="${investment.id}"/>
+				 <span th:text="${investment.name}">INVESTMENT</span><br/>
+			 </div>
+		 </div>
+
+		 <div class="investment-group" id="annuity">
+			 <h3>Choose your annuity:</h3>
+			 <div th:each="investment:${annuities}">
+				 <input name="investments" type="checkbox" th:value="${investment.id}"/>
+				 <span th:text="${investment.name}">INVESTMENT</span><br/>
+			 </div>
+		 </div>
+
+		 <div class="investment-group" id="bank_product">
+			 <h3>Choose your annuity:</h3>
+			 <div th:each="investment:${bank_products}">
+				 <input name="investments" type="checkbox" th:value="${investment.id}"/>
+				 <span th:text="${investment.name}">INVESTMENT</span><br/>
+			 </div>
+		 </div>
+
+ <h3>Name your investment account:</h3>
+ <input type="text" th:field="*{name}"/>
+ <br/>
+ <button>Submit your investment</button>
+
+		 </div>
+
+
+	 </form>
+</body>
+
+</html>
